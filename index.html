@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilos.css" />
+    <title>PCN</title>
+    <link
+      rel="icon"
+      href="programmer-computer-expert-black-linear-icon-vector (1).ico"
+    />
+  </head>
+  <body class="light-mode">
+    <header class="site-header">
+      <div class="contenedor">
+        <h1>PC NOTICIAS</h1>
+        <p class="parrafo-titulo">
+          pagina dedicada a noticias sobre el mundo de la informatica y las
+          novedades en el gaming.
+        </p>
+      </div>
+      <button id="modeToggle">Claro/Oscuro</button>
+    </header>
+
+    <script src="script.js"></script>
+
+    <div class="noticias-seccion">
+      <div class="noticia1">
+        <h2 class="noticia-semana">Noticias de la semana</h2>
+        <hr class="linea-semana" />
+        <h3>
+          "WhatsApp prepara una función para grupos que te ahorrará tiempo: de
+          qué se trata"
+        </h3>
+        <a href="noticia1.html">
+          <img src="whatsapp noticia.avif" />
+        </a>
+        <a href="noticia1.html"
+          >WhatsApp está probando una nueva función en los grupos que permitirá
+          mencionar a todos los integrantes al mismo tiempo, según
+          WaBetaInfo.</a
+        >
+      </div>
+      <hr />
+      <div class="noticia2">
+        <h3>
+          "Tras una década fallando, «Actualizar y apagar» por fin funciona bien
+          en Windows 11"
+        </h3>
+        <a href="noticia2.html">
+          <img src="windows11 noticia.jpg" />
+        </a>
+
+        <a href="noticia2.html"
+          >A pesar de ser muy importantes para el sistema, las actualizaciones
+          de Windows, tradicionalmente, siempre han sido un dolor de cabeza para
+          los usuarios.</a
+        >
+        <p>
+          FUENTE:https://hardzone.es/noticias/equipos/solucionado-problema-funcion-actualizar-apagar-windows/
+        </p>
+      </div>
+      <hr />
+      <div class="noticia3">
+        <h3>"Todos los Códigos de Umamusume: Pretty Derby (Noviembre 2025)"</h3>
+        <a href="noticia3.html">
+          <img src="umaNoticia.webp" />
+        </a>
+        <a href="noticia3.html"
+          >Te enseñamos todos los códigos que puedes canjear para conseguir
+          recompensas durante el mes de Noviembre en Umamusume Pretty Derby.</a
+        >
+        <p>
+          FUENTE:https://www.3djuegos.com/android/guias-y-trucos/todos-codigos-umamusume-pretty-derby-julio-2025
+        </p>
+      </div>
+    </div>
+
+    <h2 class="noticia-semana">
+      ¡¿Queres saber que componentes necesitas para poder armar tu PC?!
+    </h2>
+    <hr class="linea-semana" />
+
+    <h1>💻 Generador de Precios de PC</h1>
+    <p style="font-size: 40px">Elegí una gama y descubrí tu próxima Compra</p>
+    <p style="font-size: 40px">
+      Precios estimados sacados de varias paginas(Mercado Libre,Compra
+      Gamer,FullH4rd)
+    </p>
+
+    <select id="gama">
+      <option value="">Seleccionar gama...</option>
+      <option value="economica">Económica</option>
+      <option value="gamer">Gamer</option>
+      <option value="extrema">Extrema</option>
+    </select>
+    <button onclick="generarBuild()">Generar Build</button>
+
+    <div id="resultado" class="build" style="display: none"></div>
+
+    <script>
+      const builds = {
+        economica: {
+          nombre: "Build Económica",
+          componentes: [
+            { nombre: "CPU: Ryzen 5 5600G", precio: 215.998 },
+            { nombre: "GPU: Integrada Vega 7", precio: 0 },
+            { nombre: "RAM: 16GB DDR4 3200MHz", precio: 66.899 },
+            { nombre: "SSD: 500GB NVMe", precio: 76.949 },
+            { nombre: "Motherboard: B550M", precio: 134.453 },
+            { nombre: "Fuente: 550W 80+ Bronze", precio: 82.566 },
+            { nombre: "Gabinete:RGB Aconcawa Voltix ", precio: 47.94 },
+          ],
+        },
+        gamer: {
+          nombre: "Build Gamer",
+          componentes: [
+            { nombre: "CPU: Ryzen 7 5800X3D", precio: 200000 },
+            { nombre: "GPU: RTX 4070 12GB", precio: 650000 },
+            { nombre: "RAM: 32GB DDR4 3600MHz", precio: 90000 },
+            { nombre: "SSD: 1TB NVMe", precio: 60000 },
+            { nombre: "Motherboard: B550 AORUS Elite", precio: 95000 },
+            { nombre: "Fuente: 750W 80+ Gold", precio: 60000 },
+            { nombre: "Gabinete: NZXT H510", precio: 50000 },
+          ],
+        },
+        extrema: {
+          nombre: "Build Extrema",
+          componentes: [
+            { nombre: "CPU: Ryzen 9 7950X3D", precio: 500000 },
+            { nombre: "GPU: RTX 4090 24GB", precio: 1800000 },
+            { nombre: "RAM: 64GB DDR5 6000MHz", precio: 250000 },
+            { nombre: "SSD: 2TB NVMe Gen4", precio: 150000 },
+            { nombre: "Motherboard: X670E AORUS Master", precio: 280000 },
+            { nombre: "Fuente: 1000W 80+ Platinum", precio: 150000 },
+            { nombre: "Gabinete: Lian Li O11 Dynamic", precio: 120000 },
+          ],
+        },
+      };
+
+      function generarBuild() {
+        const gama = document.getElementById("gama").value;
+        const resultado = document.getElementById("resultado");
+
+        if (!gama) {
+          alert("Seleccioná una gama primero");
+          return;
+        }
+
+        const build = builds[gama];
+        let html = `<h2>${build.nombre}</h2>`;
+
+        let total = 0;
+        build.componentes.forEach((c) => {
+          html += `<div class="component"><span>${
+            c.nombre
+          }</span><span>$${c.precio.toLocaleString("es-AR")}</span></div>`;
+          total += c.precio;
+        });
+
+        html += `<div class="total">Total: $${total.toLocaleString(
+          "es-AR"
+        )}</div>`;
+
+        resultado.innerHTML = html;
+        resultado.style.display = "block";
+      }
+    </script>
+
+    <div>
+      <footer class="site-footer">
+        <p class="derechos">
+          © 2025 PC NOTICIAS. Todos los derechos reservados.
+        </p>
+        <p class="contacto">Gmail Del Creador: santinorolando3@gmail.com</p>
+      </footer>
+    </div>
+  </body>
+</html>

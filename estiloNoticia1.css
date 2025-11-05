@@ -1,0 +1,165 @@
+@font-face {
+  font-family: fuentePagina; /*Define el nombre que va a tener la nueva fuente*/
+  src: url("craft-gothic-condensed.ttf"); /*Definiendo ubicacion de la fuente*/
+}
+
+@font-face {
+  font-family: fuenteParrafos;
+  src: url(Belgrano-Regular.ttf);
+}
+
+body {
+  font-family: fuentePagina; /*Aplica la nueva fuente al body*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: white;
+  color: #333333;
+  width: 98.8vw;
+}
+.contenedor {
+  box-sizing: border-box;
+  display: flex; /* necesario para que funcionen las propiedades flex */
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(212, 26, 26);
+  /* separación y apariencia */
+  height: 20vh;
+  position: relative;
+
+  width: 99vw;
+}
+.head {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 12vh;
+  text-align: left;
+}
+.parrafo-titulo {
+  display: flex;
+  width: 60vh;
+  text-align: center;
+  font-size: 5vh;
+}
+
+.dark-mode {
+  background-color: #333333;
+  color: white;
+}
+#modeToggle {
+  display: flex;
+  padding: 10px 20px;
+  height: 7vh;
+  margin: 0;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  background-color: #333333;
+  color: white;
+  position: absolute; /* <-- coloca el botón respecto a .contenedor */
+  top: 12px; /* separación desde el borde superior del contenedor */
+  right: 12px; /* separación desde el borde derecho del contenedor */
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode #modeToggle {
+  background-color: white;
+  color: #333333;
+}
+
+h1 {
+  display: flex;
+  font-size: 10vh;
+  text-align: center;
+}
+
+h2 {
+  display: flex;
+  font-size: 10vh;
+  width: 60vw;
+}
+
+.noticia {
+  display: flex; /* necesario para que funcionen las propiedades flex */
+  width: 75vw;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0px;
+  margin: 2%;
+  border-radius: 10px;
+}
+
+.escrito {
+  font-family: fuenteParrafos;
+  padding: 10px 100px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: auto;
+  width: 100vh;
+  margin: 0;
+  font-size: 4vh;
+  border-radius: 10px;
+}
+
+img {
+  width: 100vh;
+  height: 60vh;
+  padding: 5px 0px;
+  border-radius: 10px;
+}
+
+a {
+  color: white;
+  font-size: 5vh;
+}
+.botonAtrasDiv {
+  display: flex;
+  padding: 20px 20px;
+  width: 20vh;
+  height: auto;
+  margin: 10;
+  margin-bottom: auto;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #004b28;
+
+  top: 12px; /* separación desde el borde superior del contenedor */
+  right: 12px; /* separación desde el borde derecho del contenedor */
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-footer {
+  display: flex;
+  margin: 50px 0 0 0;
+  width: 100%;
+  background-color: #000000;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  font-size: 5vh;
+  height: 20vh;
+  position: relative;
+  width: 98.8vw;
+}
+.derechos {
+  color: rgb(219, 219, 219);
+  font-size: 5vh;
+  text-align: center;
+}
+.contacto {
+  color: rgb(219, 219, 219);
+  font-size: 5vh;
+  text-align: center;
+}
